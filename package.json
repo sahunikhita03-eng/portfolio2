@@ -1,0 +1,8 @@
+{
+  "name": "portfolio2",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm install --prefix portfolio-app && npm run build --prefix portfolio-app && node -e \"fs.cpSync('portfolio-app/dist', 'dist', {recursive: true})\""
+  }
+}
