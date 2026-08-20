@@ -39,11 +39,10 @@ export default function Navbar() {
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
         <div className="navbar-inner">
-          <a href="#home" className="navbar-logo" onClick={(e) => handleNavClick(e, '#home')}>
+          <a href="#home" className="navbar-logo" onClick={(e) => handleNavClick(e, '#home')} aria-label="Home">
             <div className="navbar-avatar-ring">
               <img src={profileImg} alt={resumeData.personal.name} className="navbar-avatar" />
             </div>
-            <span className="navbar-logo-text">Nikhita<span>.</span></span>
           </a>
 
           <div className="navbar-links">
