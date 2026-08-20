@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import resumeData from '../data/resumeData';
+import profileImg from '../assets/profile.jpg';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +40,10 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
         <div className="navbar-inner">
           <a href="#home" className="navbar-logo" onClick={(e) => handleNavClick(e, '#home')}>
-            NS<span>.</span>
+            <div className="navbar-avatar-ring">
+              <img src={profileImg} alt={resumeData.personal.name} className="navbar-avatar" />
+            </div>
+            <span className="navbar-logo-text">Nikhita<span>.</span></span>
           </a>
 
           <div className="navbar-links">

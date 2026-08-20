@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Mail, ArrowDown, FileDown } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../components/Icons';
 import resumeData from '../data/resumeData';
+import profileImg from '../assets/profile.jpg';
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -43,68 +44,84 @@ export default function Hero() {
       </div>
 
       <div className="container">
-        <div
-          className="hero-content"
-          style={{
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s',
-          }}
-        >
-          <div className="hero-badge">
-            <span className="dot" />
-            Open to Opportunities
+        <div className="hero-wrapper">
+          <div
+            className="hero-content"
+            style={{
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s',
+            }}
+          >
+            <div className="hero-badge">
+              <span className="dot" />
+              Open to Opportunities
+            </div>
+
+            <h1 className="hero-name">
+              Hi, I'm{' '}
+              <span className="gradient-text">{resumeData.personal.name}</span>
+            </h1>
+
+            <p className="hero-title">{resumeData.personal.subtitle}</p>
+
+            <p className="hero-description">
+              {resumeData.summary.split('.').slice(0, 2).join('.') + '.'}
+            </p>
+
+            <div className="hero-buttons">
+              <a href="#projects" className="btn btn-primary">
+                <ArrowDown size={18} />
+                View Projects
+              </a>
+              <a
+                href={resumeData.personal.resumeFile}
+                download
+                className="btn btn-outline"
+              >
+                <FileDown size={18} />
+                Download Resume
+              </a>
+            </div>
+
+            <div className="hero-socials">
+              <a
+                href={resumeData.personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+              >
+                <GithubIcon size={20} />
+              </a>
+              <a
+                href={resumeData.personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedinIcon size={20} />
+              </a>
+              <a
+                href={`mailto:${resumeData.personal.email}`}
+                aria-label="Send Email"
+              >
+                <Mail size={20} />
+              </a>
+            </div>
           </div>
 
-          <h1 className="hero-name">
-            Hi, I'm{' '}
-            <span className="gradient-text">{resumeData.personal.name}</span>
-          </h1>
-
-          <p className="hero-title">{resumeData.personal.subtitle}</p>
-
-          <p className="hero-description">
-            {resumeData.summary.split('.').slice(0, 2).join('.') + '.'}
-          </p>
-
-          <div className="hero-buttons">
-            <a href="#projects" className="btn btn-primary">
-              <ArrowDown size={18} />
-              View Projects
-            </a>
-            <a
-              href={resumeData.personal.resumeFile}
-              download
-              className="btn btn-outline"
-            >
-              <FileDown size={18} />
-              Download Resume
-            </a>
-          </div>
-
-          <div className="hero-socials">
-            <a
-              href={resumeData.personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Profile"
-            >
-              <GithubIcon size={20} />
-            </a>
-            <a
-              href={resumeData.personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedinIcon size={20} />
-            </a>
-            <a
-              href={`mailto:${resumeData.personal.email}`}
-              aria-label="Send Email"
-            >
-              <Mail size={20} />
-            </a>
+          <div
+            className="hero-image-container"
+            style={{
+              opacity: mounted ? 1 : 0,
+              transform: mounted ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s',
+            }}
+          >
+            <div className="hero-image-card">
+              <div className="hero-image-glow" />
+              <img src={profileImg} alt={resumeData.personal.name} className="hero-profile-img" />
+            </div>
           </div>
         </div>
       </div>
